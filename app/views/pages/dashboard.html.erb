@@ -1,0 +1,16 @@
+<% content_for :title, "Your space · Sprout" %>
+<div class="dashboard-shell">
+  <header class="dashboard-nav">
+    <a class="brand" href="<%= dashboard_path %>"><span class="brand-mark">s</span> sprout</a>
+    <div class="nav-right"><span class="user-greeting"><%= current_user.name %></span><%= button_to "Log out", logout_path, method: :delete, class: "logout-button" %></div>
+  </header>
+  <main class="dashboard-content">
+    <span class="eyebrow">Your personal space</span>
+    <h1>Welcome, <%= current_user.name.split.first %>.</h1>
+    <p class="dashboard-lead">You're signed in and ready to get started.</p>
+    <section class="welcome-card">
+      <div class="welcome-icon">✳</div>
+      <div><h2>Your space is ready to grow.</h2><p>This is your dashboard. You can build out the rest of your app from here.</p></div>
+    </section>
+  </main>
+</div>

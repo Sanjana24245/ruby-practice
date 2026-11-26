@@ -1,0 +1,34 @@
+<% content_for :title, "Register" %>
+<main class="simple-auth">
+  <h1>Register</h1>
+  <p class="auth-description">Naya account banane ke liye details bharein.</p>
+
+  <% if @user.errors.any? %>
+    <div class="form-error">
+      <p>Details check karein:</p>
+      <ul><% @user.errors.full_messages.each do |message| %><li><%= message %></li><% end %></ul>
+    </div>
+  <% end %>
+
+  <%= form_with model: @user, url: register_path, local: true, class: "simple-form" do |form| %>
+    <div class="simple-field">
+      <%= form.label :name, "Name" %>
+      <%= form.text_field :name, required: true, autofocus: true, autocomplete: "name", placeholder: "Your name" %>
+    </div>
+    <div class="simple-field">
+      <%= form.label :email, "Email" %>
+      <%= form.email_field :email, required: true, autocomplete: "email", placeholder: "you@example.com" %>
+    </div>
+    <div class="simple-field">
+      <%= form.label :password, "Password (kam se kam 8 characters)" %>
+      <%= form.password_field :password, required: true, minlength: 8, autocomplete: "new-password", placeholder: "Password" %>
+    </div>
+    <div class="simple-field">
+      <%= form.label :password_confirmation, "Confirm password" %>
+      <%= form.password_field :password_confirmation, required: true, minlength: 8, autocomplete: "new-password", placeholder: "Password dobara likhein" %>
+    </div>
+    <%= form.submit "Register", class: "simple-submit" %>
+  <% end %>
+
+  <p class="auth-switch">Pehle se account hai? <%= link_to "Login", login_path %></p>
+</main>

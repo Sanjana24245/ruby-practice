@@ -1,0 +1,23 @@
+<% content_for :title, "Login" %>
+<main class="simple-auth">
+  <h1>Login</h1>
+  <p class="auth-description">Apne account mein login karein.</p>
+
+  <% if flash[:alert].present? %>
+    <p class="form-error"><%= flash[:alert] %></p>
+  <% end %>
+
+  <%= form_with scope: :session, url: login_path, local: true, class: "simple-form" do |form| %>
+    <div class="simple-field">
+      <%= form.label :email, "Email" %>
+      <%= form.email_field :email, required: true, autofocus: true, autocomplete: "email", placeholder: "you@example.com" %>
+    </div>
+    <div class="simple-field">
+      <%= form.label :password, "Password" %>
+      <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Password" %>
+    </div>
+    <%= form.submit "Login", class: "simple-submit" %>
+  <% end %>
+
+  <p class="auth-switch">Account nahi hai? <%= link_to "Register", register_path %></p>
+</main>
